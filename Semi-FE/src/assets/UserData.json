@@ -1,0 +1,43 @@
+{
+        "users": [
+                {
+                        "id": "",
+                        "userEmail": "",
+                        "username": "intec01",
+                        "profile_url": "",
+                        "userNickName": "USER_01",
+                        "userCreateTime": "",
+                        "userUniqueID": "",
+                        "LoginId": "test01",
+                        "password": "test1",
+                        "userProfileImageUrl": "",
+                        "userDescription": ""
+                },
+                {
+                        "id": "",
+                        "userEmail": "",
+                        "username": "intec02",
+                        "profile_url": "",
+                        "userNickName": "USER_02",
+                        "userCreateTime": "",
+                        "userUniqueID": "",
+                        "LoginId": "test02",
+                        "password": "test2",
+                        "userProfileImageUrl": "",
+                        "userDescription": ""
+                },
+                {
+                        "id": "",
+                        "userEmail": "",
+                        "username": "intec03",
+                        "profile_url": "",
+                        "userNickName": "USER_03",
+                        "userCreateTime": "",
+                        "userUniqueID": "",
+                        "LoginId": "test03",
+                        "password": "test3",
+                        "userProfileImageUrl": "",
+                        "userDescription": ""
+                }
+        ]
+}
