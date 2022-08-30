@@ -26,10 +26,10 @@ public class FriendMatch {
 
     @ManyToOne
     @JoinColumn(name = "receiveFriendId")
-    UserInfo receiveFriend;
+    UserInfo receiveFriendId;
 
     @Column
     @Enumerated(EnumType.STRING)
-    FriendStatus friendStatus = FriendStatus.FOLLOWER;
+    FriendStatus friendStatus = FriendStatus.UNFOLLOW;
 
 }

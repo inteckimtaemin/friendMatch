@@ -74,9 +74,9 @@ public class UserInfoService {
         }
     }
 
-    public Boolean deleteUser(DeleteUserRequest userId){
+    public Boolean deleteUser(String userNickname){
         try{
-            userInfoRepository.deleteById(userId.getUserId());
+            userInfoRepository.deleteById(userInfoRepository.findByUserNickName(userNickname).getUserInfoId());
         }catch (Exception e){
             return Boolean.FALSE;
         }

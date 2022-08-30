@@ -1,6 +1,5 @@
 package com.webmister.semicolon.controller;
 
-import com.webmister.semicolon.domain.FriendMatch;
 import com.webmister.semicolon.request.FriendMatchRequest;
 import com.webmister.semicolon.service.FriendMatchService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +18,29 @@ public class FriendMatchController {
         this.friendMatchService = friendMatchService;
     }
 
-    @PostMapping("/friend/friendMatch/{postFriendId}")
-    public ResponseEntity<FriendMatch> friendMatch(@PathVariable("postFriendId") Long postFriendId,
+    @PostMapping("/friend/friendMatch/{postFriendNickname}")
+    public ResponseEntity<Boolean> friendMatch(@PathVariable("postFriendNickname") String postFriendNickname,
                                                    @RequestBody FriendMatchRequest friendMatchRequest) {
         HttpHeaders resHeaders = new HttpHeaders();
         resHeaders.add("Content-Type", "application/json;charset=UTF-8");
-        FriendMatch friendMatch = friendMatchService.FriendMatchSave(postFriendId, friendMatchRequest);
-        return new ResponseEntity<>(friendMatch, resHeaders, HttpStatus.OK);
+        try {
+            friendMatchService.FriendMatchSave(postFriendNickname, friendMatchRequest);
+        }catch (Exception e){
+            return new ResponseEntity<>(Boolean.FALSE, resHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(Boolean.TRUE, resHeaders, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/friend/friendDelete/{postFriendNickname}")
+    public ResponseEntity<Boolean> friendDelete(@PathVariable("postFriendNickname") String postFriendNickname,
+                                               @RequestBody FriendMatchRequest friendMatchRequest) {
+        HttpHeaders resHeaders = new HttpHeaders();
+        resHeaders.add("Content-Type", "application/json;charset=UTF-8");
+        try {
+            friendMatchService.FriendMatchDelete(postFriendNickname, friendMatchRequest);
+        }catch (Exception e){
+            return new ResponseEntity<>(Boolean.FALSE, resHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(Boolean.TRUE, resHeaders, HttpStatus.OK);
     }
 }

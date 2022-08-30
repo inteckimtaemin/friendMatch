@@ -96,13 +96,13 @@ public class UserInfoController {
         return new ResponseEntity<>(Boolean.TRUE, resHeaders, HttpStatus.OK);
     }
 
-    @DeleteMapping("/userDelete")
-    public ResponseEntity<Boolean> reportDelete(@RequestBody DeleteUserRequest deleteUserRequest){
+    @DeleteMapping("/userDelete/{userNickname}")
+    public ResponseEntity<Boolean> userDelete(@PathVariable("userNickname")String userNickname){
         HttpHeaders resHeaders = new HttpHeaders();
         resHeaders.add("Content-Type", "application/json;charset=UTF-8");
 
         try {
-            userInfoService.deleteUser(deleteUserRequest);
+            userInfoService.deleteUser(userNickname);
         }catch (Exception e){
             return new ResponseEntity<>(Boolean.FALSE, resHeaders, HttpStatus.BAD_REQUEST);
         }

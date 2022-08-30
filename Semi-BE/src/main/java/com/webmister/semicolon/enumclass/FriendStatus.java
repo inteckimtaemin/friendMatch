@@ -6,7 +6,7 @@ import lombok.Getter;
 public enum FriendStatus {
 
     FOLLOW("connect", Long.valueOf(1)),
-    FOLLOWER("unConnect", Long.valueOf(0));
+    UNFOLLOW("unConnect", Long.valueOf(0));
 
     private String connectOrUnConnect;
     private Long number;

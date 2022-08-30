@@ -50,6 +50,11 @@ public class UserInfo {
     @OneToMany(mappedBy = "userInfo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Comment> commentList = new ArrayList<Comment>();
 
+    @Column
+    @OneToMany(mappedBy = "postFriendId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<FriendMatch> friendMatchList = new ArrayList<FriendMatch>();
+
+
 
     public UserInfo setPassword(String password) {
         this.password = password;

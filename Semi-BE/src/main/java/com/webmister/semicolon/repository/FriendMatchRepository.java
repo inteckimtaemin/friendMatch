@@ -10,4 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface FriendMatchRepository extends JpaRepository<FriendMatch, Long> {
+    FriendMatch findFriendMatchByPostFriendIdAndReceiveFriendId(Long postFriendId, Long receiveFriendId);
 }
