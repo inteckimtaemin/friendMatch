@@ -1,5 +1,6 @@
 package com.webmister.semicolon.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.webmister.semicolon.enumclass.UserStatus;
 import lombok.*;
 import org.apache.catalina.User;
@@ -54,6 +55,7 @@ public class UserInfo {
 
     @Column
     @OneToMany(mappedBy = "postFriendId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private List<FriendMatch> friendMatchList = new ArrayList<FriendMatch>();
 
     public UserInfo setPassword(String password) {

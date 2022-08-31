@@ -22,6 +22,7 @@ public class FriendMatch {
 
     @ManyToOne
     @JoinColumn(name = "postFriendId")
+    @JsonBackReference
     UserInfo postFriendId;
 
     @ManyToOne

@@ -36,8 +36,8 @@ public class FriendMatchController {
     }
 
     @PostMapping("/friend/printAll/{userNickname}")
-    public ResponseEntity<List<UserInfo>> friendList(@PathVariable("userNickname") String userNickname){
-        List<UserInfo> friendMatchList;
+    public ResponseEntity<List<FriendMatch>> friendList(@PathVariable("userNickname") String userNickname){
+        List<FriendMatch> friendMatchList;
         HttpHeaders resHeaders = new HttpHeaders();
         resHeaders.add("Content-Type", "application/json;charset=UTF-8");
         friendMatchList = friendMatchService.FriendList(userNickname);

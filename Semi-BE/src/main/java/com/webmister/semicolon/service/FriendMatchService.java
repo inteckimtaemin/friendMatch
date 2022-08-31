@@ -56,15 +56,8 @@ public class FriendMatchService {
         return Boolean.TRUE;
     }
 
-    public List<UserInfo> FriendList(String userNickname){
-        Long postFriendId = userInfoRepository.findUserInfoByUserNickName(userNickname).getUserInfoId();
-        List<FriendMatch> allFriendMatchList = friendMatchRepository.findAll();
-        List<UserInfo> friendMatchList = new ArrayList<>();
-        for(FriendMatch friendMatch : allFriendMatchList){
-            if(friendMatch.getFriendMatchId() == friendMatchRepository.findByPostFriendId(postFriendId).getFriendMatchId()){
-                friendMatchList.add(friendMatch.getReceiveFriendId());
-            }
-        }
+    public List<FriendMatch> FriendList(String userNickname){
+        List<FriendMatch> friendMatchList = userInfoRepository.findUserInfoByUserNickName(userNickname).getFriendMatchList();
         return friendMatchList;
     }
 
