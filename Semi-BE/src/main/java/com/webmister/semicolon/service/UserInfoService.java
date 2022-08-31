@@ -1,6 +1,7 @@
 package com.webmister.semicolon.service;
 
 import com.webmister.semicolon.domain.UserInfo;
+import com.webmister.semicolon.enumclass.UserStatus;
 import com.webmister.semicolon.repository.UserInfoRepository;
 import com.webmister.semicolon.request.DeleteUserRequest;
 import com.webmister.semicolon.request.Login;
@@ -40,10 +41,10 @@ public class UserInfoService {
     public boolean checkDupicateUserNickname(String userNickname) {
         return userInfoRepository.existsByUserNickName(userNickname);
     }
+
     public boolean checkDuplicateUserPassword(String userPassword)  {
         return userInfoRepository.existsByPassword(userPassword);
     }
-
 
    public UserInfo login(Login login) {
        return userInfoRepository.findByUserEmailAndPassword(login.getUserEmail(), login.getPassword())
@@ -63,7 +64,7 @@ public class UserInfoService {
                     .password(userInfoRequest.getPassword())
                     .userEmail(userInfoRequest.getUserEmail())
                     .userNickName(userInfoRequest.getUserNickName())
-                    .userUniqueID(userInfoRequest.getUserUniqueID())
+                    .userUniqueID(UserStatus.USER)
                     .userProfileImageUrl(userInfoRequest.getUserProfileImageUrl())
                     .userDescription(userInfoRequest.getUserDescription())
                     .build());

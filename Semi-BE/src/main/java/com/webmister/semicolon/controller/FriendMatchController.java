@@ -1,5 +1,7 @@
 package com.webmister.semicolon.controller;
 
+import com.webmister.semicolon.domain.FriendMatch;
+import com.webmister.semicolon.domain.UserInfo;
 import com.webmister.semicolon.request.FriendMatchRequest;
 import com.webmister.semicolon.service.FriendMatchService;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +9,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -31,6 +35,18 @@ public class FriendMatchController {
         return new ResponseEntity<>(Boolean.TRUE, resHeaders, HttpStatus.OK);
     }
 
+    @PostMapping("/friend/printAll/{userNickname}")
+    public ResponseEntity<List<UserInfo>> friendList(@PathVariable("userNickname") String userNickname){
+        List<UserInfo> friendMatchList;
+        HttpHeaders resHeaders = new HttpHeaders();
+        resHeaders.add("Content-Type", "application/json;charset=UTF-8");
+        friendMatchList = friendMatchService.FriendList(userNickname);
+        log.debug(String.valueOf(friendMatchList));
+        return new ResponseEntity<>(friendMatchList,resHeaders,HttpStatus.OK);
+    }
+
+
+
     @DeleteMapping("/friend/friendDelete/{postFriendNickname}")
     public ResponseEntity<Boolean> friendDelete(@PathVariable("postFriendNickname") String postFriendNickname,
                                                @RequestBody FriendMatchRequest friendMatchRequest) {
@@ -43,4 +59,5 @@ public class FriendMatchController {
         }
         return new ResponseEntity<>(Boolean.TRUE, resHeaders, HttpStatus.OK);
     }
+
 }

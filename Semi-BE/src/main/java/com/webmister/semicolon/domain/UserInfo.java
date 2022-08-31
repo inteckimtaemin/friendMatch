@@ -1,5 +1,6 @@
 package com.webmister.semicolon.domain;
 
+import com.webmister.semicolon.enumclass.UserStatus;
 import lombok.*;
 import org.apache.catalina.User;
 
@@ -33,8 +34,9 @@ public class UserInfo {
     @Column(nullable = false)
     private LocalDateTime userInfoCreateDate;
 
-    @Column
-    private String userUniqueID;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserStatus userUniqueID;
 
     @Column
     private String userProfileImageUrl;
@@ -53,8 +55,6 @@ public class UserInfo {
     @Column
     @OneToMany(mappedBy = "postFriendId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<FriendMatch> friendMatchList = new ArrayList<FriendMatch>();
-
-
 
     public UserInfo setPassword(String password) {
         this.password = password;

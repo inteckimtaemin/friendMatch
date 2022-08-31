@@ -44,7 +44,7 @@ public class UserInfoController {
         HttpHeaders resHeaders = new HttpHeaders();
         resHeaders.add("Content-Type", "application/json;charset=UTF-8");
 
-        return new ResponseEntity<>(userInfoList ,resHeaders,  HttpStatus.OK);
+        return new ResponseEntity<>(userInfoList, resHeaders, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/get",
